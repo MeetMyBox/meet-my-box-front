@@ -276,7 +276,7 @@ export const ApplicationPage = () => {
   //   }
   // };
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (newValue: number) => {
     setSelectedTab(newValue);
   };
 

@@ -156,7 +156,7 @@ export const CalculateForm = () => {
           width: width,
           height: height,
           length: length,
-          width: width,
+          weight: weight,
         })
       );
       window.location.href = `/rates`;
@@ -183,7 +183,12 @@ export const CalculateForm = () => {
         localStorage.setItem("rates", JSON.stringify(response));
         localStorage.setItem(
           "dimensionsData",
-          JSON.stringify({ width: width, height: height, length: length })
+          JSON.stringify({
+            width: width,
+            height: height,
+            length: length,
+            weight: weight,
+          })
         );
         window.location.href = `/rates`;
         console.log(response);
@@ -507,7 +512,12 @@ export const CalculateFormPC = () => {
       localStorage.setItem("rates", JSON.stringify(response));
       localStorage.setItem(
         "dimensionsData",
-        JSON.stringify({ width: width, height: height, length: length })
+        JSON.stringify({
+          width: width,
+          height: height,
+          length: length,
+          weight: weight,
+        })
       );
       window.location.href = `/rates`;
     } else {
@@ -532,7 +542,12 @@ export const CalculateFormPC = () => {
         localStorage.setItem("rates", JSON.stringify(response));
         localStorage.setItem(
           "dimensionsData",
-          JSON.stringify({ width: width, height: height, length: length })
+          JSON.stringify({
+            width: width,
+            height: height,
+            length: length,
+            weight: weight,
+          })
         );
         window.location.href = `/rates`;
       } catch (err: any) {
