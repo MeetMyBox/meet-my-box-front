@@ -4,7 +4,7 @@ export async function useSendEmail(data: any): Promise<any> {
   try {
     const response = await axiosInstance.post("/api/user/payment/final", data);
 
-    console.log("Profile got successfully:", response.data);
+    // console.log("Profile got successfully:", response.data);
 
     return response.data.rates;
   } catch (error: unknown | any) {

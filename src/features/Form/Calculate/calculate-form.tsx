@@ -6,7 +6,7 @@ import {
   getFinalPrice,
 } from "@shared/lib/content/CostTables";
 import { useGetRates } from "@shared/lib/hooks/useGetRates";
-import { validatePostcode } from "@shared/lib/hooks/usePostCodeValidate";
+// import { validatePostcode } from "@shared/lib/hooks/usePostCodeValidate";
 import { CalculateInput } from "@shared/ui/Input/Calculate/calculate-input";
 import { useEffect, useState } from "react";
 
@@ -65,9 +65,9 @@ export const CalculateForm = () => {
   const [toCountry, setToCountry] = useState("Russia");
   const [fromPostcode, setFromPostcode] = useState("");
   const [toPostcode, setToPostcode] = useState("");
-  const [shippingRates, setShippingRates] = useState([]);
+  const [shippingRates, _setShippingRates] = useState([]);
   const [error, setError] = useState<string | null>(null);
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: any) => {
@@ -77,10 +77,10 @@ export const CalculateForm = () => {
 
     localStorage.setItem("weight", weight.toString());
 
-    const isFromPostcodeValid = await validatePostcode(
-      fromCountry,
-      fromPostcode
-    );
+    // const isFromPostcodeValid = await validatePostcode(
+    //   fromCountry,
+    //   fromPostcode
+    // );
     // const isToPostcodeValid = await validatePostcode(toCountry, toPostcode);
 
     // if (!isFromPostcodeValid) {
@@ -191,7 +191,6 @@ export const CalculateForm = () => {
           })
         );
         window.location.href = `/rates`;
-        console.log(response);
       } catch (err: any) {
         setIsLoading(false);
         setError(err.message);
@@ -378,7 +377,7 @@ export const CalculateForm = () => {
         <div className="flex justify-end mt-4">
           <button
             // type="submit"
-            onClick={() => console.log("lol")}
+            // onClick={() => console.log("lol")}
             disabled={isLoading}
             className="bg-main hover:bg-hover text-white font-semibold py-2 px-6 rounded-md shadow-md"
           >
@@ -416,12 +415,12 @@ export const CalculateFormPC = () => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [length, setLength] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const [fromCountry, setFromCountry] = useState("Italy");
   const [toCountry, setToCountry] = useState("Russia");
   const [fromPostcode, setFromPostcode] = useState("");
   const [toPostcode, setToPostcode] = useState("");
-  const [shippingRates, setShippingRates] = useState([]);
+  // const [shippingRates, setShippingRates] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -434,13 +433,12 @@ export const CalculateFormPC = () => {
     e.preventDefault();
     setError(null); // Reset error state
     setIsLoading(true);
-    console.log();
 
-    const isFromPostcodeValid = await validatePostcode(
-      fromCountry,
-      fromPostcode
-    );
-    const isToPostcodeValid = await validatePostcode(toCountry, toPostcode);
+    // const isFromPostcodeValid = await validatePostcode(
+    //   fromCountry,
+    //   fromPostcode
+    // );
+    // const isToPostcodeValid = await validatePostcode(toCountry, toPostcode);
 
     // if (!isFromPostcodeValid) {
     //   setError("Неверный почтовый индекс отправителя.");
@@ -504,7 +502,6 @@ export const CalculateFormPC = () => {
         );
         return;
       }
-      console.log(length + height + width);
       if (length + height + width > 150) {
         setError("Габариты посылки не могут привышать более 150см.");
         return;
@@ -588,9 +585,9 @@ export const CalculateFormPC = () => {
     if (value > 15) value = 15; // Limit the value to a maximum of 100
     setter(value);
   };
-  const handleClick = (setter: any) => {
-    setter("");
-  };
+  // const handleClick = (setter: any) => {
+  //   setter("");
+  // };
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md mt-8">
@@ -748,7 +745,7 @@ export const CalculateFormPC = () => {
         <div className="flex justify-end mt-4">
           <button
             // type="submit"
-            onClick={() => console.log("lol")}
+            // onClick={() => console.log("lol")}
             disabled={isLoading}
             className="bg-main hover:bg-hover text-white font-semibold py-2 px-6 rounded-md shadow-md"
           >
@@ -762,7 +759,7 @@ export const CalculateFormPC = () => {
       </div>
       <div className="mt-6">
         {error && <p className="text-red-500">{error}</p>}
-        {shippingRates.length > 0 ? (
+        {/* {shippingRates.length > 0 ? (
           <ul className="list-disc list-inside">
             {shippingRates.map((rate: any, index: number) => (
               <li key={index} className="text-gray-700">
@@ -775,7 +772,7 @@ export const CalculateFormPC = () => {
           <span className="text-gray-500">
             Заполните все необходимые поля, чтобы рассчитать стоимость
           </span>
-        )}
+        )} */}
       </div>
     </div>
   );

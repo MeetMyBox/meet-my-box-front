@@ -2,13 +2,10 @@ import styles from "./styles.module.scss";
 
 interface IPackageDetails {
   items: any;
-  onClick: any;
+  onClick?: () => void;
 }
 
-export const PackageDetails: React.FC<IPackageDetails> = ({
-  items,
-  onClick,
-}) => {
+export const PackageDetails: React.FC<IPackageDetails> = ({ items }) => {
   return (
     <div className={styles.bg}>
       <div className={styles.container}>

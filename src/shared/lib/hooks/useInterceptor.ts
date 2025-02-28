@@ -39,7 +39,7 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
 
       const refreshToken = parsedData.refresh;
-      console.log("my refresh", refreshToken);
+      // console.log("my refresh", refreshToken);
 
       if (refreshToken) {
         try {
@@ -54,8 +54,6 @@ axiosInstance.interceptors.response.use(
           );
 
           if (res.status === 201) {
-            console.log("works");
-
             // Update both localStorage and in-memory parsedData
             localStorage.setItem("accessToken", res.data.access);
             parsedData.access = res.data.access;

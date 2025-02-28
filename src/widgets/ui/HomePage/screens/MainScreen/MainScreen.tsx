@@ -9,6 +9,7 @@ import { Paragraph } from "@shared/ui/Paragraph/ui/paragraph";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import styles from "./styles.module.scss";
+import { Loader } from "@widgets/ui/Loader/ui/loader";
 
 export const MainScreen = () => {
   const [main, setMain] = useState<any>();
@@ -35,7 +36,9 @@ export const MainScreen = () => {
     localStorage.removeItem("rates");
   }, []);
 
-  if (isLoading) return null;
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

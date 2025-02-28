@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 export const ConsentCheckbox = ({ checked, handleCheck }: any) => {
   return (
     <div className="flex items-center">

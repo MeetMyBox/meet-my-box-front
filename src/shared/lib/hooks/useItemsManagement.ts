@@ -27,15 +27,12 @@ export const useItemsManagement = () => {
         return prevItems; // Возвращаем старое состояние без изменений
       }
 
-      console.log("Adding item:", newItem);
       return [...prevItems, newItem]; // Добавляем новый элемент в конец массива
     });
   };
 
   // Удаление предмета по ID
   const removeItem = (id: number) => {
-    console.log("Removing item with ID:", id);
-
     // Получаем текущее состояние `packageID` из localStorage
     const packageData = JSON.parse(localStorage.getItem("packageId") || "{}");
 
@@ -49,7 +46,6 @@ export const useItemsManagement = () => {
 
       // Обновляем localStorage с новыми данными
       localStorage.setItem("packageId", JSON.stringify(packageData));
-      console.log("Updated localStorage packageID:", packageData);
     }
 
     // Обновляем состояние items, чтобы отразить изменения

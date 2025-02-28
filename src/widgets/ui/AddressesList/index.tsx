@@ -1,10 +1,10 @@
-import type { AddressProps } from "@features/AddressesCard";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useGetAddresses } from "@shared/lib/hooks/useGetAddress";
 import Button from "@shared/ui/Button/ui/button";
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
+import type { AddressProps } from "src/types/adress-types";
 
 export const AddressesSelectors: React.FC = () => {
   const [addresses, setAddresses] = useState<AddressProps[]>();
@@ -108,7 +108,7 @@ export const AddressesSelectors: React.FC = () => {
       <Button
         text="Выбрать"
         buttonType="filled"
-        onClick={() => console.log("Выбранный адрес:", chosenAddress)} // Простая логика выбора
+        // onClick={() => console.log("Выбранный адрес:", chosenAddress)} // Простая логика выбора
       />
     </div>
   );

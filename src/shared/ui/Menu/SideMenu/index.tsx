@@ -36,7 +36,7 @@ export const Menu = () => {
               className="w-[160px] mt-32"
             />
             <nav className="flex flex-col items-center gap-4 mt-8">
-              {sidePanelLinks.map((item, index) => (
+              {sidePanelLinks.map((item) => (
                 <a className="text-dark text-xl" href={item.to}>
                   {item.name}
                 </a>

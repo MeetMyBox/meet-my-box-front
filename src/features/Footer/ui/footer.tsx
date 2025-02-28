@@ -18,7 +18,6 @@ export const Footer: React.FC = () => {
       try {
         setIsLoading(true);
         const block = await useGetBlock("/api/footers/1");
-        console.log("MYMYMY", block);
         setFooter(block);
       } catch (error) {
         console.error("Error fetching footer data:", error);
@@ -34,6 +33,7 @@ export const Footer: React.FC = () => {
   if (isLoading) {
     return null;
   }
+  const currentYear = new Date().getFullYear();
 
   // Return the complete footer structure once data is fetched
   return (
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
           </div>
           <SocialMediaLinks />
           <span className="text-white flex flex-col items-center mb-4 text-sm">
-            © Meetmybox.com 2024.{" "}
+            © Meetmybox.com {currentYear}
             <span className="text-sm mt-2">
               Все права защищены. All rights reserved.
             </span>

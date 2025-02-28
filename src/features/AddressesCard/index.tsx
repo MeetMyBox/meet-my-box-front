@@ -10,19 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-
-export interface AddressProps {
-  id: number;
-  type: "receiver" | "sender";
-  firstName: string;
-  phoneNumber: string;
-  street: string;
-  housing: string;
-  building: string;
-  apartment: string;
-  city: string;
-  postal_code: string;
-}
+import type { AddressProps } from "src/types/adress-types";
 
 interface Items {
   items: AddressProps[];

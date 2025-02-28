@@ -60,9 +60,9 @@ export const CostCard: React.FC<CostCardProps> = ({
   }
 
   // Calculate total weight and total cost
-  const totalWeight = packageCurrent.items
-    .reduce((acc, item) => acc + item.weight, 0)
-    .toFixed(2); // Fixed to 2 digits
+  // const totalWeight = packageCurrent.items
+  //   .reduce((acc, item) => acc + item.weight, 0)
+  //   .toFixed(2); // Fixed to 2 digits
 
   const totalCost = packageCurrent.items
     .reduce((acc, item) => acc + item.cost * 0.05, 0)
@@ -73,7 +73,7 @@ export const CostCard: React.FC<CostCardProps> = ({
   const handleDialogClose = () => setOpenDialog(false);
 
   // Управление вкладками
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
 

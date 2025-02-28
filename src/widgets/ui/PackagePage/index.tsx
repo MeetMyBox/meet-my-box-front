@@ -10,7 +10,7 @@ export const PackagesPage = () => {
     const fetchPackages = async () => {
       try {
         const fetchedPackages = await useGetPackages();
-        console.log("Fetched Packages:", fetchedPackages); // Debug output
+        // console.log("Fetched Packages:", fetchedPackages); // Debug output
         setPackages(fetchedPackages || []);
       } catch (error) {
         console.error("Error fetching packages:", error);

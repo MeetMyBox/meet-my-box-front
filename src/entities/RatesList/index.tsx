@@ -56,7 +56,7 @@ export const RatesList: React.FC<Props> = ({ days, prices, dates, urls }) => {
   );
 };
 export const RatesListPC: React.FC<Props> = ({ days, prices, dates, urls }) => {
-  const [showInfo, setShowInfo] = useState(false);
+  // const [showInfo, setShowInfo] = useState(false);
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(
     null
   );

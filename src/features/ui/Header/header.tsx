@@ -10,24 +10,24 @@ interface IHeader {
   isMobile?: boolean;
 }
 
-export const Header: React.FC<IHeader> = ({ isMobile }) => {
+export const Header: React.FC<IHeader> = () => {
   const [userEmail, setUserEmail] = useState(null);
   const [isDropdown, setIsDropdown] = useState(false);
   const [isDropdown2, setIsDropdown2] = useState(false);
-  let dropdownTimeout1: any;
-  let dropdownTimeout2: any;
-  const handleMouseEnter = (setter: any, timer: any) => {
+  // let dropdownTimeout1: number;
+  // let dropdownTimeout2: number;
+  const handleMouseEnter = (setter: any) => {
     if (setter === setIsDropdown) {
       setIsDropdown2(false);
     } else {
       setIsDropdown(false);
     }
-    clearTimeout(timer); // Clear any existing timeout
+    // clearTimeout(timer); // Clear any existing timeout
     setter(true); // Show the dropdown
   };
 
-  const handleMouseLeave = (setter: any, timer: any) => {
-    timer = setTimeout(() => {
+  const handleMouseLeave = (setter: any) => {
+    setTimeout(() => {
       setter(false); // Hide the dropdown after 3 seconds
     }, 3000); // Adjust the delay to 3000ms (3 seconds)
   };
@@ -50,7 +50,6 @@ export const Header: React.FC<IHeader> = ({ isMobile }) => {
   // Function to toggle the menu state
   const toggleMenu = () => {
     isMenuOpen.set(!menuOpen);
-    console.log("is menu open:", isMenuOpen);
   };
 
   return (
@@ -74,12 +73,8 @@ export const Header: React.FC<IHeader> = ({ isMobile }) => {
         <nav className={styles.header_pc__nav}>
           <a
             className={`${styles.header_pc__nav__link} ${styles.hover_link}`}
-            onMouseEnter={() =>
-              handleMouseEnter(setIsDropdown, dropdownTimeout1)
-            }
-            onMouseLeave={() =>
-              handleMouseLeave(setIsDropdown, dropdownTimeout1)
-            }
+            onMouseEnter={() => handleMouseEnter(setIsDropdown)}
+            onMouseLeave={() => handleMouseLeave(setIsDropdown)}
             href="/#calculate-pc"
           >
             Отправить посылку
@@ -116,12 +111,8 @@ export const Header: React.FC<IHeader> = ({ isMobile }) => {
           <a
             className={`${styles.header_pc__nav__link} ${styles.hover_link2}`}
             href="/#contacts-pc"
-            onMouseEnter={() =>
-              handleMouseEnter(setIsDropdown2, dropdownTimeout2)
-            }
-            onMouseLeave={() =>
-              handleMouseLeave(setIsDropdown2, dropdownTimeout2)
-            }
+            onMouseEnter={() => handleMouseEnter(setIsDropdown2)}
+            onMouseLeave={() => handleMouseLeave(setIsDropdown2)}
           >
             Помощь с покупкой
           </a>

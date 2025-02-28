@@ -30,9 +30,9 @@ export const ProfileMenu = () => {
     }
   }, []);
 
-  const handleContactsNavigation = () => {
-    window.location.href = "#contacts-mob";
-  };
+  // const handleContactsNavigation = () => {
+  //   window.location.href = "#contacts-mob";
+  // };
 
   return (
     <>

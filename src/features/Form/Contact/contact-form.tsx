@@ -167,7 +167,7 @@ export const ContactFormPC = () => {
           width="w-[50%]"
           value={name}
           onChange={(e) => {
-            setName(e.target.value), console.log(e.target.value); // Comma here causes issues
+            setName(e.target.value); // Comma here causes issues
           }}
           name="from_name"
         />
@@ -178,7 +178,7 @@ export const ContactFormPC = () => {
           width="w-[50%]"
           value={phone}
           onChange={(e) => {
-            setPhone(e.target.value), console.log(e.target.value); // Comma here causes issues
+            setPhone(e.target.value); // Comma here causes issues
           }}
           name="phone"
         />

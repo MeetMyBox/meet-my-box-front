@@ -10,8 +10,8 @@ export const AddAddressPage = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const fetchedUser = await useGetProfile();
-      console.log("user", fetchedUser);
+      const fetchedUser = useGetProfile();
+      // console.log("user", fetchedUser);
       setUser(fetchedUser as any);
     };
 

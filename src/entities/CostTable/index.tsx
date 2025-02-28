@@ -7,42 +7,42 @@ const PricingTable = ({ cost1, cost2 }: any) => {
   );
 
   // Данные таблицы
-  const pricingData = {
-    standard: [
-      { weight: "1", price: "36€" },
-      { weight: "2", price: "38€" },
-      { weight: "3", price: "42€" },
-      { weight: "4", price: "44€" },
-      { weight: "5", price: "47€" },
-      { weight: "6", price: "48€" },
-      { weight: "7", price: "51€" },
-      { weight: "8", price: "54€" },
-      { weight: "9", price: "56€" },
-      { weight: "10", price: "58€" },
-      { weight: "11", price: "63€" },
-      { weight: "12", price: "66€" },
-      { weight: "13", price: "68€" },
-      { weight: "14", price: "71€" },
-      { weight: "15", price: "73€" },
-    ],
-    express: [
-      { weight: "1", price: "39€" },
-      { weight: "2", price: "43€" },
-      { weight: "3", price: "50€" },
-      { weight: "4", price: "57€" },
-      { weight: "5", price: "60€" },
-      { weight: "6", price: "65€" },
-      { weight: "7", price: "70€" },
-      { weight: "8", price: "75€" },
-      { weight: "9", price: "79€" },
-      { weight: "10", price: "82€" },
-      { weight: "11", price: "90€" },
-      { weight: "12", price: "94€" },
-      { weight: "13", price: "99€" },
-      { weight: "14", price: "104€" },
-      { weight: "15", price: "108€" },
-    ],
-  };
+  // const pricingData = {
+  //   standard: [
+  //     { weight: "1", price: "36€" },
+  //     { weight: "2", price: "38€" },
+  //     { weight: "3", price: "42€" },
+  //     { weight: "4", price: "44€" },
+  //     { weight: "5", price: "47€" },
+  //     { weight: "6", price: "48€" },
+  //     { weight: "7", price: "51€" },
+  //     { weight: "8", price: "54€" },
+  //     { weight: "9", price: "56€" },
+  //     { weight: "10", price: "58€" },
+  //     { weight: "11", price: "63€" },
+  //     { weight: "12", price: "66€" },
+  //     { weight: "13", price: "68€" },
+  //     { weight: "14", price: "71€" },
+  //     { weight: "15", price: "73€" },
+  //   ],
+  //   express: [
+  //     { weight: "1", price: "39€" },
+  //     { weight: "2", price: "43€" },
+  //     { weight: "3", price: "50€" },
+  //     { weight: "4", price: "57€" },
+  //     { weight: "5", price: "60€" },
+  //     { weight: "6", price: "65€" },
+  //     { weight: "7", price: "70€" },
+  //     { weight: "8", price: "75€" },
+  //     { weight: "9", price: "79€" },
+  //     { weight: "10", price: "82€" },
+  //     { weight: "11", price: "90€" },
+  //     { weight: "12", price: "94€" },
+  //     { weight: "13", price: "99€" },
+  //     { weight: "14", price: "104€" },
+  //     { weight: "15", price: "108€" },
+  //   ],
+  // };
 
   // Обработчик переключения таблицы
   const handleTableSwitch = (type: "Стандарт" | "Экспресс") => {

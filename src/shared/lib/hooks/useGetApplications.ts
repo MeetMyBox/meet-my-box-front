@@ -5,8 +5,6 @@ export async function useGetApplications(): Promise<ApplicationProps[]> {
   try {
     const response = await axiosInstance.get("/api/user/admin/applications");
 
-    console.log("Applications got successfully:", response.data);
-
     return response.data.applications;
   } catch (error: unknown | any) {
     console.error("Failed to get applications:", error);

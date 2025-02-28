@@ -14,14 +14,14 @@ export const CalculateScreen = () => {
   const [calculate, setCalculate] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
   const [isForm, setIsForm] = useState(true);
-  const [parcels, setParcels] = useState([1]); // State to handle multiple parcels
+  const [parcels, _setParcels] = useState([1]); // State to handle multiple parcels
 
   useEffect(() => {
     const fetchBlock = async () => {
       try {
         setIsLoading(true);
         const block = await useGetBlock("/api/calculate-blocks/1");
-        console.log("calc block:", block);
+        // console.log("calc block:", block);
         setCalculate(block);
       } catch (error) {
         console.error("Error fetching packages:", error);
@@ -38,11 +38,11 @@ export const CalculateScreen = () => {
   };
 
   // Add a new parcel to the state
-  const handleAddParcel = () => {
-    setParcels((prevParcels) => [...prevParcels, prevParcels.length + 1]);
-  };
+  // const handleAddParcel = () => {
+  //   setParcels((prevParcels) => [...prevParcels, prevParcels.length + 1]);
+  // };
 
-  if (isLoading) return <>a</>;
+  if (isLoading) return null;
 
   return (
     <>
@@ -60,7 +60,7 @@ export const CalculateScreen = () => {
           margin="mt-4"
           onClick={handleToggleForm}
         />
-        {parcels.map((parcel, index) => (
+        {parcels.map((_parcel, index) => (
           <div key={index}>
             {isForm ? (
               <CalculateForm />
@@ -87,7 +87,7 @@ export const CalculateScreen = () => {
             onClick={handleToggleForm}
           />
         </div>
-        {parcels.map((parcel, index) => (
+        {parcels.map((_parcel, index) => (
           <div key={index}>
             {isForm ? (
               <CalculateFormPC />

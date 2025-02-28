@@ -1,12 +1,12 @@
 import file from "@assets/forbidden.pdf";
 import box_img from "@assets/icons8.svg";
 export const InfoScreen: React.FC = () => {
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToBottom = () => {
+  //   window.scrollTo({
+  //     top: document.documentElement.scrollHeight,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-gray-50 rounded-lg shadow-md mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-800">

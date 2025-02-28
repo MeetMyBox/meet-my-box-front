@@ -11,7 +11,7 @@ export function useGetProfile() {
     async function fetchProfile() {
       try {
         const response = await axiosInstance.get("/api/user/get-profile");
-        console.log("Profile got successfully:", response.data);
+        // console.log("Profile got successfully:", response.data);
         setResult(response.data.profile);
       } catch (error: unknown | any) {
         console.error("Failed to get profile:", error);

@@ -22,7 +22,7 @@ export const PaymentPage = () => {
 
         setClientSecret(client_secret); // Set the client secret correctly
         setAmount(amount); // Set the amount to be charged correctly
-        console.log(client_secret, amount); // Log the client secret and amount
+        // console.log(client_secret, amount); // Log the client secret and amount
       } catch (error) {
         console.error("Error fetching payment details:", error);
       }

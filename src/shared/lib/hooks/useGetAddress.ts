@@ -1,11 +1,9 @@
-import type { AddressProps } from "@features/AddressesCard";
+import type { IExtendedAddress } from "src/types/adress-types";
 import { axiosInstance } from "./useInterceptor";
 
-export async function useGetAddresses(): Promise<AddressProps[]> {
+export async function useGetAddresses(): Promise<IExtendedAddress[]> {
   try {
     const response = await axiosInstance.get("api/address/get-addresses");
-
-    console.log("Addresses got successfully:", response.data);
 
     return response.data.addresses;
   } catch (error: unknown | any) {

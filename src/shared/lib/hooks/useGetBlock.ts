@@ -36,7 +36,7 @@ export async function useGetBlock(
       },
     });
 
-    console.log("Block got successfully:", response.data.data.attributes);
+    // console.log("Block got successfully:", response.data.data.attributes);
 
     return response.data.data.attributes;
   } catch (error: unknown | any) {

@@ -6,7 +6,7 @@ export const ServiceList = () => {
   return (
     <div className={styles.service__list}>
       {serviceList.map((item, index) => (
-        <div className={styles.item}>
+        <div key={index} className={styles.item}>
           <img
             width={400}
             height={400}

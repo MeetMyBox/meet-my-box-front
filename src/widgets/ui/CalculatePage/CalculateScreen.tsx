@@ -15,7 +15,7 @@ export const CalculatePage = () => {
   const [calculate, setCalculate] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
   const [isForm, setIsForm] = useState(true);
-  const [parcels, setParcels] = useState([1]); // State to handle multiple parcels
+  const [parcels, _setParcels] = useState([1]); // State to handle multiple parcels
 
   useEffect(() => {
     const fetchBlock = async () => {
@@ -38,9 +38,9 @@ export const CalculatePage = () => {
   };
 
   // Add a new parcel to the state
-  const handleAddParcel = () => {
-    setParcels((prevParcels) => [...prevParcels, prevParcels.length + 1]);
-  };
+  // const handleAddParcel = () => {
+  //   setParcels((prevParcels) => [...prevParcels, prevParcels.length + 1]);
+  // };
 
   if (isLoading) return <></>;
 
@@ -60,7 +60,7 @@ export const CalculatePage = () => {
           margin="mt-4"
           onClick={handleToggleForm}
         />
-        {parcels.map((parcel, index) => (
+        {parcels.map((_parcel, index) => (
           <div key={index}>
             {isForm ? (
               <CalculateForm />
@@ -99,7 +99,7 @@ export const CalculatePage = () => {
             onClick={handleToggleForm}
           />
         </div>
-        {parcels.map((parcel, index) => (
+        {parcels.map((_parcel, index) => (
           <div key={index}>
             {isForm ? (
               <CalculateFormPC />

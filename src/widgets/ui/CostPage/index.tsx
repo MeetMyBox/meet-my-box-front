@@ -11,7 +11,7 @@ import { Loader } from "../Loader/ui/loader";
 import styles from "./styles.module.scss";
 
 export const CostPage = () => {
-  const [tableState, setTableState] = useState<string>("Стандарт");
+  // const [tableState, setTableState] = useState<string>("Стандарт");
   const [cost, setCost] = useState<any>(null);
   const [cost2, setCost2] = useState<any>(null);
   const [help, setHelp] = useState<any>(null);
@@ -51,7 +51,7 @@ export const CostPage = () => {
           height={400}
           className={styles.cost__img}
         />
-        <h2 className={styles.cost__heading}>{cost.heading}</h2>
+        <h1 className={styles.cost__heading}>{cost.heading}</h1>
         <Paragraph isCentered margin="mt-4" width="w-[30%]">
           {cost.paragraph}
         </Paragraph>
@@ -61,9 +61,9 @@ export const CostPage = () => {
             <PricingTable cost1={cost} cost2={cost2} />
           </>
         </div>
-        <h3 className={`${styles.cost__heading} mt-4 mb-4`}>
+        <h2 className={`${styles.cost__heading} mt-4 mb-4`}>
           Помощь с покупкой
-        </h3>
+        </h2>
         <ServicePricingTable help={help} />
         <Button
           text="Помощь с покупкой"

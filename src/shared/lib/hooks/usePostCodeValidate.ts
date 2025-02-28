@@ -46,14 +46,14 @@ export const validatePostcode = async (
       response.data.results[postcode] &&
       response.data.results[postcode].length > 0
     ) {
-      console.log("Valid postcode:", postcode);
+      // console.log("Valid postcode:", postcode);
       return true;
     } else {
-      console.log("Invalid postcode:", postcode);
+      // console.log("Invalid postcode:", postcode);
       return false; // Postcode is not valid
     }
   } catch (error) {
-    console.error("Error validating postcode:", error);
+    // console.error("Error validating postcode:", error);
     return false; // Handle error case
   }
 };

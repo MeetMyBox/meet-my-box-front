@@ -9,27 +9,27 @@ interface IHeader {
   isMobile?: boolean;
 }
 
-export const ProfileHeader: React.FC<IHeader> = ({ isMobile }) => {
-  const [userEmail, setUserEmail] = useState(null);
-  const [isDropdown, setIsDropdown] = useState(false);
-  const [isDropdown2, setIsDropdown2] = useState(false);
-  let dropdownTimeout1: any;
-  let dropdownTimeout2: any;
-  const handleMouseEnter = (setter: any, timer: any) => {
-    if (setter === setIsDropdown) {
-      setIsDropdown2(false);
-    } else {
-      setIsDropdown(false);
-    }
-    clearTimeout(timer); // Clear any existing timeout
-    setter(true); // Show the dropdown
-  };
+export const ProfileHeader: React.FC<IHeader> = () => {
+  const [_userEmail, setUserEmail] = useState(null);
+  // const [_isDropdown, setIsDropdown] = useState(false);
+  // const [_isDropdown2, setIsDropdown2] = useState(false);
+  // let dropdownTimeout1: any;
+  // let dropdownTimeout2: any;
+  // const handleMouseEnter = (setter: any, timer: any) => {
+  //   if (setter === setIsDropdown) {
+  //     setIsDropdown2(false);
+  //   } else {
+  //     setIsDropdown(false);
+  //   }
+  //   clearTimeout(timer); // Clear any existing timeout
+  //   setter(true); // Show the dropdown
+  // };
 
-  const handleMouseLeave = (setter: any, timer: any) => {
-    timer = setTimeout(() => {
-      setter(false); // Hide the dropdown after 3 seconds
-    }, 3000); // Adjust the delay to 3000ms (3 seconds)
-  };
+  // const handleMouseLeave = (setter: any, timer: any) => {
+  //   timer = setTimeout(() => {
+  //     setter(false); // Hide the dropdown after 3 seconds
+  //   }, 3000); // Adjust the delay to 3000ms (3 seconds)
+  // };
 
   useEffect(() => {
     // Check for userData in localStorage

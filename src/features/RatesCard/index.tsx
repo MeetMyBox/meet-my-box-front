@@ -3,7 +3,6 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "@shared/ui/Button/ui/button";
 import type React from "react";
-import { useState } from "react";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -11,20 +10,21 @@ interface Props {
   price: string;
   date: DateArray;
   url: string;
+  rateType?: string;
 }
 
-const translateTime = {
-  DAYS: "Дней",
-  HOURS: "Часов",
-  MONTHS: "Месяцев",
-  WEEKS: "Недель",
-  DAY: "День",
-  HOUR: "Час",
-  MONTH: "Месяц",
-  WEEK: "Неделя",
-};
+// const translateTime = {
+//   DAYS: "Дней",
+//   HOURS: "Часов",
+//   MONTHS: "Месяцев",
+//   WEEKS: "Недель",
+//   DAY: "День",
+//   HOUR: "Час",
+//   MONTH: "Месяц",
+//   WEEK: "Неделя",
+// };
 export const RatesCard: React.FC<Props> = ({ day, price, date, url }) => {
-  const [showInfo, setShowInfo] = useState(false);
+  // const [showInfo, setShowInfo] = useState(false);
 
   const handleButtonClick = () => {
     if (day.estimateNumber == "10") {
@@ -68,7 +68,7 @@ export const RatesCard: React.FC<Props> = ({ day, price, date, url }) => {
   );
 };
 export const RatesCardPC: React.FC<Props> = ({ day, price, date, url }) => {
-  const [showInfo, setShowInfo] = useState(false);
+  // const [showInfo, setShowInfo] = useState(false);
   const handleButtonClick = () => {
     // Store the price in localStorage
 

@@ -12,17 +12,17 @@ import styles from "./styles.module.scss";
 
 export const ContactScreen = () => {
   const [contact, setContact] = useState<any>();
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchBlock = async () => {
       try {
-        setIsLoading(true);
+        // setIsLoading(true);
         const block = await useGetBlock("/api/contact-blocks/1");
         setContact(block);
       } catch (error) {
         console.error("Error fetching packages:", error);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
 

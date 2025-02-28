@@ -1,4 +1,3 @@
-import type { AddressProps } from "@features/AddressesCard";
 import { AgreeCard } from "@features/Cards/AgreeCard";
 import { CourierCard } from "@features/Cards/CourierCard";
 import { InsuranceCard } from "@features/Cards/InsuranceCard";
@@ -26,12 +25,25 @@ import { useUpdatePackage } from "@shared/lib/hooks/Packages/useUpdatePackage";
 import { checkAuth } from "@shared/lib/hooks/useCheckAuth";
 import { useGetAddresses } from "@shared/lib/hooks/useGetAddress";
 import Button from "@shared/ui/Button/ui/button";
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+  type SetStateAction,
+  type SyntheticEvent,
+} from "react";
 import { Tooltip } from "react-tooltip";
 
-import { Card, CardContent, Grid } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import type { AddressProps, IExtendedAddress } from "src/types/adress-types";
 
-const AddressCard = ({ title, address }) => (
+const AddressCard = ({
+  title,
+  address,
+}: {
+  title: string;
+  address: IExtendedAddress;
+}) => (
   <Card sx={{ minWidth: 350, mb: 2 }}>
     <CardContent>
       <Typography variant="h6" gutterBottom>
@@ -68,7 +80,13 @@ const AddressCard = ({ title, address }) => (
   </Card>
 );
 
-const AddressDisplay = ({ senderAddress, receiverAddress }) => (
+const AddressDisplay = ({
+  senderAddress,
+  receiverAddress,
+}: {
+  senderAddress?: IExtendedAddress;
+  receiverAddress?: IExtendedAddress;
+}) => (
   <Grid
     container
     direction="row"
@@ -78,12 +96,12 @@ const AddressDisplay = ({ senderAddress, receiverAddress }) => (
     sx={{ width: "100vw", maxWidth: "100%", margin: "auto" }}
   >
     {senderAddress && (
-      <Grid item>
+      <Grid>
         <AddressCard title="Отправитель" address={senderAddress} />
       </Grid>
     )}
     {receiverAddress && (
-      <Grid item>
+      <Grid>
         <AddressCard title="Получатель" address={receiverAddress} />
       </Grid>
     )}
@@ -96,9 +114,9 @@ export const ApplicationPage = () => {
   const [selectedAddressType, setSelectedAddressType] = useState<
     "sender" | "receiver" | null
   >(null);
-  const [addresses, setAddresses] = useState<AddressProps[]>();
-  const [senderAddress, setSenderAddress] = useState<AddressProps[]>();
-  const [receiverAddress, setReceiverAddress] = useState<AddressProps>();
+  const [addresses, setAddresses] = useState<IExtendedAddress[]>();
+  const [senderAddress, setSenderAddress] = useState<IExtendedAddress>();
+  const [receiverAddress, setReceiverAddress] = useState<IExtendedAddress>();
   const [previousInsurance, setPreviousInsurance] = useState(false);
   const [previousCourier, setPreviousCourier] = useState(false);
   const [currentAddress, setCurrentAddress] = useState<AddressProps[]>();
@@ -125,7 +143,7 @@ export const ApplicationPage = () => {
   const handleDialogOpen = () => setOpenDialog(true);
   const handleDialogClose = () => setOpenDialog(false);
   const toggle3 = () => setAgree3(!agree3); // Обработчик для третьего сост
-  const toggle4 = () => setAgree4(!agree3);
+  const toggle4 = () => setAgree4(!agree4);
   const toggle5 = () => setInsurance(!insurance); // Обработчик для третьего сост
   const toggle6 = () => setCourier(!courier);
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
@@ -135,6 +153,9 @@ export const ApplicationPage = () => {
     null
   );
 
+  if (address || currentAddress) {
+    console.log(address, currentAddress);
+  }
   useEffect(() => {
     const fetchAddressesAsync = async () => {
       const storedPackageId = JSON.parse(
@@ -165,7 +186,6 @@ export const ApplicationPage = () => {
 
           if (fetchedAddresses) {
             setAddresses(fetchedAddresses);
-            console.log("lol:", fetchedAddresses);
 
             // Фильтруем только два адреса — отправителя и получателя
             const filteredAddresses = fetchedAddresses.filter(
@@ -216,7 +236,7 @@ export const ApplicationPage = () => {
         // Переход с true на false — убираем стоимость страховки
         newTotalPrice -= totalCost;
       }
-      console.log(newTotalPrice);
+      // console.log(newTotalPrice);
       setPreviousInsurance(insurance);
       setPreviousCourier(courier);
 
@@ -229,10 +249,10 @@ export const ApplicationPage = () => {
       return; // Возвращаемся, если данные еще не загружены
     }
     // Рассчитываем 5% от стоимости всех элементов
-    const totalCost = packageCurrent.items.reduce((sum: number, item: any) => {
-      const itemCost = parseFloat(item.cost);
-      return sum + itemCost * 0.05;
-    }, 0);
+    // const totalCost = packageCurrent.items.reduce((sum: number, item: any) => {
+    //   const itemCost = parseFloat(item.cost);
+    //   return sum + itemCost * 0.05;
+    // }, 0);
 
     // Используем предыдущее значение для корректного пересчета
     setTotalPrice((prevPrice) => {
@@ -245,7 +265,7 @@ export const ApplicationPage = () => {
         // Переход с true на false — убираем стоимость курьера
         newTotalPrice -= 3;
       }
-      console.log(newTotalPrice);
+      // console.log(newTotalPrice);
       setPreviousInsurance(insurance);
       setPreviousCourier(courier);
 
@@ -276,8 +296,11 @@ export const ApplicationPage = () => {
   //   }
   // };
 
-  const handleTabChange = (newValue: number) => {
-    setSelectedTab(newValue);
+  const handleTabChange = (
+    newValue: SetStateAction<number> | SyntheticEvent<Element, Event>
+  ) => {
+    const valid = newValue as number;
+    setSelectedTab(valid);
   };
 
   const handleAgreeClick = async () => {
@@ -316,7 +339,7 @@ export const ApplicationPage = () => {
 
       localStorage.removeItem("dimensionsData");
 
-      console.log(package_now);
+      // console.log(package_now);
 
       // Update package data in localStorage
       localStorage.setItem("packageId", JSON.stringify(package_now));
@@ -355,14 +378,14 @@ export const ApplicationPage = () => {
   // Обработчик выбора адреса из выпадающего списка
   const handleAddressChange = (selectedId: number) => {
     // Проверка существования выбранного адреса в списке
-    const selectedAddress = addresses.find(
+    const selectedAddress = addresses?.find(
       (address) => address.id === selectedId
     );
-
     if (!selectedAddress) {
       alert("Выбранный адрес не существует!");
       return;
     }
+    console.log(selectedAddress);
 
     // Проверка, что адреса отправителя и получателя разные
     if (selectedAddressType === "sender" && selectedId !== receiverAddressId) {
@@ -407,7 +430,7 @@ export const ApplicationPage = () => {
       <div style={{ width: "100%", overflowX: "auto" }}>
         <Tabs
           value={selectedTab}
-          onChange={handleTabChange}
+          onChange={(value) => handleTabChange(value)}
           sx={{ marginBottom: 4, width: "100%" }} // Set width to ensure it fits the container
           centered={!isSmallScreen} // Centered only on larger screens
           variant={isSmallScreen ? "scrollable" : "fullWidth"} // Scrollable on small screens
@@ -490,7 +513,7 @@ export const ApplicationPage = () => {
             </option>
             {addresses?.map((address) => (
               <option key={address.id} value={address.id}>
-                {`${address.postalCode},  ${address.city}, Улица ${address.street} ${address.housing}, Кв. ${address.apartment}, Дом ${address.building}`}
+                {`${address.postal_code},  ${address.city}, Улица ${address.street} ${address.housing}, Кв. ${address.apartment}, Дом ${address.building}`}
               </option>
             ))}
           </select>
@@ -530,7 +553,7 @@ export const ApplicationPage = () => {
               fullWidth
             >
               <DialogTitle>Детали содержимого</DialogTitle>
-              {packageCurrent.items === undefined ? (
+              {packageCurrent?.items === undefined ? (
                 <div className="ml-4  mb-4">Содержимое вашей посылки пусто</div>
               ) : (
                 <DialogContent>
@@ -611,7 +634,7 @@ export const ApplicationPage = () => {
         <>
           <div className="flex flex-col items-center justify-center">
             <DialogTitle>Детали содержимого</DialogTitle>
-            {packageCurrent.items === undefined ? (
+            {packageCurrent?.items === undefined ? (
               <div className="ml-4">Содержимое вашей посылки пусто</div>
             ) : (
               <DialogContent>
@@ -670,7 +693,7 @@ export const ApplicationPage = () => {
         <>
           <InsuranceCard
             onInsuranceClick={handleInsuranceClick}
-            packageCurrent={packageCurrent.items}
+            packageCurrent={packageCurrent?.items}
             price={price}
           />
           <Button
@@ -686,7 +709,7 @@ export const ApplicationPage = () => {
               fullWidth
             >
               <DialogTitle>Детали содержимого</DialogTitle>
-              {packageCurrent.items === undefined ? (
+              {packageCurrent?.items === undefined ? (
                 <div className="ml-4">Содержимое вашей посылки пусто</div>
               ) : (
                 <DialogContent>
@@ -775,7 +798,7 @@ export const ApplicationPage = () => {
               fullWidth
             >
               <DialogTitle>Детали содержимого</DialogTitle>
-              {packageCurrent.items === undefined ? (
+              {packageCurrent?.items === undefined ? (
                 <div className="ml-4">Содержимое вашей посылки пусто</div>
               ) : (
                 <DialogContent>
@@ -913,13 +936,13 @@ export const ApplicationPage = () => {
 
           <div>
             <DialogTitle>Детали содержимого</DialogTitle>
-            {packageCurrent.items === undefined ? (
+            {packageCurrent?.items === undefined ? (
               <div className="ml-4">Содержимое вашей посылки пусто</div>
             ) : (
               <DialogContent>
                 <Table>
                   <TableBody>
-                    {packageCurrent.items.map((item: any, index: number) => (
+                    {packageCurrent?.items.map((item: any, index: number) => (
                       <TableRow
                         key={index}
                         sx={{ display: { xs: "block", sm: "table-row" } }}

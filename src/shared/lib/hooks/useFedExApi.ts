@@ -8,7 +8,7 @@ const fedExCredentials = {
   meterNumber: "YOUR_FEDEX_METER_NUMBER",
 };
 
-async function calculateFedExRate(
+export async function calculateFedExRate(
   weight: number,
   width: number,
   length: number,

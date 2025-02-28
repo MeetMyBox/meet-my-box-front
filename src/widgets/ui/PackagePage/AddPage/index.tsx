@@ -1,5 +1,4 @@
 import { AddPackages, AddPackagesPC } from "@entities/Packages/AddPackage";
-import type { AddressProps } from "@features/AddressesCard";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { checkAuth } from "@shared/lib/hooks/useCheckAuth";
@@ -8,12 +7,13 @@ import Button from "@shared/ui/Button/ui/button";
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
 import styles from "./styles.module.scss";
+import type { AddressProps } from "src/types/adress-types";
 
 export const AddPackagesPage = () => {
   const [address, setAddress] = useState<AddressProps[]>([]);
-  const packageQuantityData = JSON.parse(
-    localStorage.getItem("packageQuantity") as any
-  );
+  // const packageQuantityData = JSON.parse(
+  //   localStorage.getItem("packageQuantity") as any
+  // );
 
   useEffect(() => {
     const isAuthenticated = checkAuth();

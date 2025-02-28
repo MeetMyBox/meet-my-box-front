@@ -9,7 +9,7 @@ export async function useCreatePayment(): Promise<any> {
     }
 
     // Parse the packageData from localStorage
-    const parsedPackage = JSON.parse(packageId);
+    // const parsedPackage = JSON.parse(packageId);
     const price = localStorage.getItem("priceData");
 
     // Step 4: Send a POST request to create a new payment order with the calculated amount

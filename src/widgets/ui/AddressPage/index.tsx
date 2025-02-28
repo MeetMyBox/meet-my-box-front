@@ -1,5 +1,5 @@
 import no_address from "@assets/no_address.png";
-import { AddressPC, type AddressProps } from "@features/AddressesCard";
+import { AddressPC } from "@features/AddressesCard";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useGetAddresses } from "@shared/lib/hooks/useGetAddress";
@@ -7,6 +7,7 @@ import Button from "@shared/ui/Button/ui/button";
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
 import styles from "./styles.module.scss";
+import type { AddressProps } from "src/types/adress-types";
 
 export const AddressPage = () => {
   const [address, setAddress] = useState<AddressProps[]>([]);

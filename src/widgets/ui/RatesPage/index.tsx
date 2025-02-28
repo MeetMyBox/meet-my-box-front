@@ -9,7 +9,7 @@ import { Tooltip } from "react-tooltip";
 import styles from "./styles.module.scss";
 
 export const RatesPage = () => {
-  const [showInfo, setShowInfo] = useState();
+  // const [showInfo, setShowInfo] = useState();
   const [rates, setRates] = useState<any>(null);
 
   useEffect(() => {

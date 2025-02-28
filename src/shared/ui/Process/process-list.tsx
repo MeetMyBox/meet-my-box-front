@@ -13,13 +13,12 @@ export const ProcessList: React.FC<IProcessList> = ({
   const start = choosenState === "Отправить посылку" ? 0 : 4;
   const end = choosenState === "Отправить посылку" ? 4 : 7;
   const content = items.slice(start, end);
-  console.log(content[0].image.data.attributes.url);
+  // console.log(content[0].image.data.attributes.url);
 
   return (
     <div className={styles.process__list}>
       {content.map((item, index) => (
         <ImageCard
-        
           key={index}
           img={item.image.data.attributes.url}
           description={item.text}

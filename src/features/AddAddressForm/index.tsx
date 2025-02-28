@@ -102,7 +102,7 @@ export const AddAddressForm: React.FC<{ user?: any }> = ({ user }) => {
       <ToggleButtonGroup
         value={isReceiver ? "receiver" : "sender"}
         exclusive
-        onChange={(e, value) => setIsReceiver(value === "receiver")}
+        onChange={(_e, value) => setIsReceiver(value === "receiver")}
         sx={{ mb: 3 }}
       >
         <ToggleButton value="receiver">Получатель</ToggleButton>
@@ -362,7 +362,7 @@ export const AddAddressFormPC: React.FC<{ user?: any }> = ({ user }) => {
       <ToggleButtonGroup
         value={isReceiver ? "receiver" : "sender"}
         exclusive
-        onChange={(e, value) => setIsReceiver(value === "receiver")}
+        onChange={(_e, value) => setIsReceiver(value === "receiver")}
         sx={{ mb: 3, display: "flex", justifyContent: "center" }}
       >
         <ToggleButton value="receiver">Получатель</ToggleButton>

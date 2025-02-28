@@ -21,13 +21,11 @@ export async function useAddAddress(data: IAddressData): Promise<string> {
   try {
     const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
-    const response = await axiosInstance.post("/api/address/add", data, {
+    await axiosInstance.post("/api/address/add", data, {
       headers: {
         Authorization: `Bearer ${userData.access}`,
       },
     });
-
-    console.log("Address added successfully:", response.data);
 
     return "Success";
   } catch (error: unknown | any) {

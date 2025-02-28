@@ -2,7 +2,7 @@ import { Box, Tooltip } from "@mui/material";
 import Button from "@shared/ui/Button/ui/button";
 import { BorderInput } from "@shared/ui/Input/BorderInput/border-input";
 import { CalculateInput } from "@shared/ui/Input/Calculate/calculate-input";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 
 type Item = {
@@ -142,7 +142,7 @@ export const AddPackagesFormPC: React.FC<AddPackagesFormProps> = ({
   handleSubmit,
   handleItemChange,
 }) => {
-  const [totalSum, setTotalSum] = useState<number>(0); // Состояние для общей стоимости
+  // const [totalSum, setTotalSum] = useState<number>(0); // Состояние для общей стоимости
   useEffect(() => {
     if (item) {
       setItemName(item.item_name);

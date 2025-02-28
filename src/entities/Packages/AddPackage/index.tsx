@@ -23,10 +23,13 @@ export const AddPackages = () => {
   const [price, setPrice] = useState("");
   const [current, setCurrent] = useState<any>(1);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
-  const [defaultItem, setDefaultItem] = useState<Item | null>(null);
+  // const [defaultItem, setDefaultItem] = useState<Item | null>(null);
   const { addItem, removeItem } = useItemsManagement();
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [_isDataLoaded, setIsDataLoaded] = useState(false);
 
+  if (addItem) {
+    console.log(addItem);
+  }
   // Господи, не удаляйте эту функцию, она спасла жизнь многим детям в будующем
   useEffect(() => {
     // Используем setTimeout для отладки проблемы с загрузкой
@@ -41,10 +44,10 @@ export const AddPackages = () => {
           );
           setItems(parsedPackage.items); // Устанавливаем состояние items из localStorage
           // Устанавливаем начальное значение counter на основе максимального ID
-          const maxId = parsedPackage.items.reduce(
-            (max: number, item: Item) => Math.max(max, item.id),
-            0
-          );
+          // const maxId = parsedPackage.items.reduce(
+          //   (max: number, item: Item) => Math.max(max, item.id),
+          //   0
+          // );
         }
       }
       setIsDataLoaded(true); // Устанавливаем флаг, что данные успешно загружены
@@ -188,34 +191,34 @@ export const AddPackages = () => {
     }
   }, [items]);
 
-  const checkTotalWeight = (newItemWeight: number) => {
-    const packageData = localStorage.getItem("packageId");
-    if (packageData) {
-      const parsedPackage = JSON.parse(packageData);
-      if (parsedPackage && parsedPackage.items) {
-        // Вычисляем общий вес предметов
-        const totalWeight = parsedPackage.items.reduce(
-          (sum: number, item: Item) => sum + item.weight,
-          0
-        );
-        // Добавляем вес нового предмета
-        const newTotalWeight = totalWeight + newItemWeight;
-        // Проверяем, меньше ли общий вес 15 кг
-        return newTotalWeight <= 15;
-      }
-    }
-    return true; // Если нет данных в localStorage, то проверка пройдена
-  };
+  // const checkTotalWeight = (newItemWeight: number) => {
+  //   const packageData = localStorage.getItem("packageId");
+  //   if (packageData) {
+  //     const parsedPackage = JSON.parse(packageData);
+  //     if (parsedPackage && parsedPackage.items) {
+  //       // Вычисляем общий вес предметов
+  //       const totalWeight = parsedPackage.items.reduce(
+  //         (sum: number, item: Item) => sum + item.weight,
+  //         0
+  //       );
+  //       // Добавляем вес нового предмета
+  //       const newTotalWeight = totalWeight + newItemWeight;
+  //       // Проверяем, меньше ли общий вес 15 кг
+  //       return newTotalWeight <= 15;
+  //     }
+  //   }
+  //   return true; // Если нет данных в localStorage, то проверка пройдена
+  // };
 
-  const saveItemsToPackage = (updatedItems: Item[]) => {
-    const packageData = JSON.parse(localStorage.getItem("packageId") || "{}");
-    const updatedPackageData = {
-      ...packageData,
-      items: updatedItems,
-    };
+  // const saveItemsToPackage = (updatedItems: Item[]) => {
+  //   const packageData = JSON.parse(localStorage.getItem("packageId") || "{}");
+  //   const updatedPackageData = {
+  //     ...packageData,
+  //     items: updatedItems,
+  //   };
 
-    localStorage.setItem("packageId", JSON.stringify(updatedPackageData));
-  };
+  //   localStorage.setItem("packageId", JSON.stringify(updatedPackageData));
+  // };
 
   const clearForm = () => {
     setItemName("");
@@ -274,7 +277,7 @@ export const AddPackages = () => {
       cost: parseInt(item.price, 10),
     }));
 
-    console.log("backend items:", backendItems);
+    // console.log("backend items:", backendItems);
 
     const current_package = await useAddPackage({
       items: backendItems,
@@ -409,10 +412,13 @@ export const AddPackagesPC = () => {
   const [price, setPrice] = useState("");
   const [current, setCurrent] = useState<any>(1);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
-  const [defaultItem, setDefaultItem] = useState<Item | null>(null);
+  // const [defaultItem, setDefaultItem] = useState<Item | null>(null);
   const { addItem, removeItem } = useItemsManagement();
-  const [isDataLoaded, setIsDataLoaded] = useState(false); // Флаг для отслеживания загрузки данных
+  // const [isDataLoaded, setIsDataLoaded] = useState(false); // Флаг для отслеживания загрузки данных
 
+  if (addItem) {
+    console.log(addItem);
+  }
   // Господи, не удаляйте эту функцию, она спасла жизнь многим детям в будующем
   useEffect(() => {
     // Используем setTimeout для отладки проблемы с загрузкой
@@ -421,19 +427,19 @@ export const AddPackagesPC = () => {
       if (packageData) {
         const parsedPackage = JSON.parse(packageData); // Парсим строку из localStorage
         if (parsedPackage && parsedPackage.items) {
-          console.log(
-            "Загрузка предметов из localStorage:",
-            parsedPackage.items
-          );
+          // console.log(
+          //   "Загрузка предметов из localStorage:",
+          //   parsedPackage.items
+          // );
           setItems(parsedPackage.items); // Устанавливаем состояние items из localStorage
           // Устанавливаем начальное значение counter на основе максимального ID
-          const maxId = parsedPackage.items.reduce(
-            (max: number, item: Item) => Math.max(max, item.id),
-            0
-          );
+          // const maxId = parsedPackage.items.reduce(
+          //   (max: number, item: Item) => Math.max(max, item.id),
+          //   0
+          // );
         }
       }
-      setIsDataLoaded(true); // Устанавливаем флаг, что данные успешно загружены
+      // setIsDataLoaded(true); // Устанавливаем флаг, что данные успешно загружены
     }, 500); // 500ms задержка для корректной инициализации состояния
   }, []);
 
@@ -597,34 +603,34 @@ export const AddPackagesPC = () => {
     }
   }, [items]);
 
-  const checkTotalWeight = (newItemWeight: number) => {
-    const packageData = localStorage.getItem("packageId");
-    if (packageData) {
-      const parsedPackage = JSON.parse(packageData);
-      if (parsedPackage && parsedPackage.items) {
-        // Вычисляем общий вес предметов
-        const totalWeight = parsedPackage.items.reduce(
-          (sum: number, item: Item) => sum + item.weight,
-          0
-        );
-        // Добавляем вес нового предмета
-        const newTotalWeight = totalWeight + newItemWeight;
-        // Проверяем, меньше ли общий вес 15 кг
-        return newTotalWeight <= 15;
-      }
-    }
-    return true; // Если нет данных в localStorage, то проверка пройдена
-  };
+  // const checkTotalWeight = (newItemWeight: number) => {
+  //   const packageData = localStorage.getItem("packageId");
+  //   if (packageData) {
+  //     const parsedPackage = JSON.parse(packageData);
+  //     if (parsedPackage && parsedPackage.items) {
+  //       // Вычисляем общий вес предметов
+  //       const totalWeight = parsedPackage.items.reduce(
+  //         (sum: number, item: Item) => sum + item.weight,
+  //         0
+  //       );
+  //       // Добавляем вес нового предмета
+  //       const newTotalWeight = totalWeight + newItemWeight;
+  //       // Проверяем, меньше ли общий вес 15 кг
+  //       return newTotalWeight <= 15;
+  //     }
+  //   }
+  //   return true; // Если нет данных в localStorage, то проверка пройдена
+  // };
 
-  const saveItemsToPackage = (updatedItems: Item[]) => {
-    const packageData = JSON.parse(localStorage.getItem("packageId") || "{}");
-    const updatedPackageData = {
-      ...packageData,
-      items: updatedItems,
-    };
+  // const saveItemsToPackage = (updatedItems: Item[]) => {
+  //   const packageData = JSON.parse(localStorage.getItem("packageId") || "{}");
+  //   const updatedPackageData = {
+  //     ...packageData,
+  //     items: updatedItems,
+  //   };
 
-    localStorage.setItem("packageId", JSON.stringify(updatedPackageData));
-  };
+  //   localStorage.setItem("packageId", JSON.stringify(updatedPackageData));
+  // };
 
   const clearForm = () => {
     setItemName("");
@@ -652,11 +658,11 @@ export const AddPackagesPC = () => {
           : item
       );
 
-      const newItemWeight = parseInt(weight);
+      // const newItemWeight = parseInt(weight);
       // Суммируем вес всех элементов + новый элемент
-      const totalWeight =
-        items.reduce((sum, item) => sum + parseInt(item.weight), 0) +
-        newItemWeight;
+      // const totalWeight =
+      //   items.reduce((sum, item) => sum + parseInt(item.weight), 0) +
+      //   newItemWeight;
 
       // if (
       //   totalWeight >
@@ -678,11 +684,11 @@ export const AddPackagesPC = () => {
         weight !== "" &&
         price !== ""
       ) {
-        const newItemWeight = parseInt(weight);
+        // const newItemWeight = parseInt(weight);
         // Суммируем вес всех элементов + новый элемент
-        const totalWeight =
-          items.reduce((sum, item) => sum + parseInt(item.weight), 0) +
-          newItemWeight;
+        // const totalWeight =
+        //   items.reduce((sum, item) => sum + parseInt(item.weight), 0) +
+        //   newItemWeight;
 
         // if (
         //   totalWeight >
@@ -715,7 +721,7 @@ export const AddPackagesPC = () => {
       cost: parseInt(item.price, 10),
     }));
 
-    console.log("backend items:", backendItems);
+    // console.log("backend items:", backendItems);
 
     const current_package = await useAddPackage({
       items: backendItems,
@@ -736,23 +742,23 @@ export const AddPackagesPC = () => {
 
   const handleSelectItem = (id: number) => {
     const item = items.find((item) => item.id === id);
-    console.log(item);
     if (item) {
       setSelectedItem(item);
       setCurrent(item.id);
     }
   };
-  console.log(items);
   return (
     <>
       <div className="flex flex-wrap gap-4 justify-center mb-4">
         {items.map((item) => {
           // Получение данных из localStorage
-          const storedPackage = JSON.parse(localStorage.getItem("packageId"));
+          const storedPackage = JSON.parse(
+            localStorage?.getItem("packageId") || "{}"
+          );
           const storedItem =
-            storedPackage?.items?.find((stored) => stored.id === item.id) || {};
-
-          console.log("storedPackage:", storedPackage, storedItem);
+            storedPackage?.items?.find(
+              (stored: { id: number }) => stored.id === item.id
+            ) || {};
 
           return (
             <Box
@@ -801,7 +807,6 @@ export const AddPackagesPC = () => {
           <select
             value={current || ""}
             onChange={(e) => {
-              console.log(e.target.value);
               handleSelectItem(parseInt(e.target.value, 10));
             }}
             className="border px-2 py-1 rounded-md w-full"

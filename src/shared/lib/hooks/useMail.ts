@@ -14,7 +14,6 @@ interface IEmailData {
 
 export async function useMail(data: IEmailData): Promise<"Success" | "Error"> {
   try {
-    console.log(data);
     const response = await axios.post(
       "https://api.emailjs.com/api/v1.0/email/send",
       data,
