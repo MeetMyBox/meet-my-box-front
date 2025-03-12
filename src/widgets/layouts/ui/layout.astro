@@ -12,6 +12,7 @@ import { Header } from "@features/ui/Header/header";
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="manifest" href="/manifest.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="preload"
@@ -25,13 +26,13 @@ import { Header } from "@features/ui/Header/header";
     />
     <title>{title}</title>
     <meta name="description" content={description} />
- 
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R5GTT67"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R5GTT67"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    
     <div class="container">
       <Header client:load isMobile />
       <slot />
